@@ -1,0 +1,25 @@
+<div class="top">
+    <h2>Number of data points</h2>
+    <input type="number" min="0" step="1" value="50" id="userNumberOfDataPoints" />
+   
+    <h2>Type of chart interpolation: <a target="_blank" href="https://bl.ocks.org/emmasaunders/f7178ed715a601c5b2c458a2c7093f78">from d3</a></h2>
+    <form>
+        <input type="radio" name="interpolation" value="linear" checked> linear
+        <br>
+        <input type="radio" name="interpolation" value="monotone"> monotone
+        <br>
+        <input type="radio" name="interpolation" value="step-before"> step-before
+        <br>
+        <input type="radio" name="interpolation" value="step-after"> step-after
+        <br>
+        <input type="radio" name="interpolation" value="cardinal"> cardinal
+    </form>
+    <br>
+    <button ng-click="testFeature.createTerrainProfileForSelectedInterpolation()" class="testButton">Try current interpolation</button>
+    <button ng-click="testFeature.createTerrainProfileForAllInterpolations()" class="testButton">Try all interpolations</button>
+    <hr>
+</div>
+
+<div class="listOfCharts">
+
+</div>

@@ -1,0 +1,26 @@
+.mvLineChart {
+    width: 0px;
+}
+.mvLineChart .main {
+     height: 300px; 
+     width: 0px;
+     width: inherit;
+}
+
+.listOfCharts {
+    display: inline-grid;
+    /* grid-template-columns: auto auto; */
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+.singleLineChart {
+    /* Make it the same size as in Metric */
+    width: 423px;
+    height: 326px;
+    border: 1px solid;
+}
+
+.redText {
+    color: red;
+}

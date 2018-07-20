@@ -1,0 +1,714 @@
+.mvg-pointer-axis-label .overlay {
+  fill: transparent;
+}
+.mvg-pointer-axis-label .guideline {
+  stroke: #FFFFFF;
+  stroke-width: 1;
+}
+.mvg-pointer-axis-label .label,
+.mvg-pointer-axis-label .axis-label {
+  text-anchor: middle;
+}
+.mvg-pointer-axis-label .pointer,
+.mvg-pointer-axis-label .axis-pointer,
+.mvg-pointer-axis-label .guideline,
+.mvg-pointer-axis-label .label,
+.mvg-pointer-axis-label .axis-label {
+  display: none;
+}
+.mvg-pointer-axis-label.previewing .pointer,
+.mvg-pointer-axis-label.previewing .axis-pointer,
+.mvg-pointer-axis-label.previewing .guideline,
+.mvg-pointer-axis-label.previewing .label,
+.mvg-pointer-axis-label.previewing .axis-label {
+  display: block !important;
+}
+.mvg-line-chart {
+  width: 641px;
+}
+.mvg-line-chart .domain {
+  display: none;
+}
+.mvg-line-chart .nodata {
+  text-align: center;
+  background: #e8edef;
+  color: #2d5666;
+  padding: 10px;
+}
+.mvg-line-chart .main {
+  height: 222px;
+}
+.mvg-line-chart .main .line {
+  fill: none;
+  stroke: #2d5666;
+  stroke-width: 2;
+}
+.mvg-line-chart .main .area {
+  fill: #e8edef;
+  stroke: none;
+}
+.mvg-line-chart .main .axis {
+  stroke: #999999;
+  fill: none;
+  stroke-width: 1;
+}
+.mvg-line-chart .main .axis .domain,
+.mvg-line-chart .main .axis .tick {
+  stroke: #999999;
+  fill: none;
+}
+.mvg-line-chart .main .axis .tick text {
+  stroke: none;
+  font-size: 10px;
+  font-family: 'Lucida Grande', Arial, sans-serif;
+  fill: #5e5e5e;
+  text-rendering: optimizeLegibility;
+}
+.mvg-interval-axis .scale.x {
+  margin-top: 20px;
+}
+.mvg-interval-axis .scale.x .tick:first-child text {
+  text-anchor: start !important;
+}
+.mvg-interval-axis .scale.x .tick text {
+  text-anchor: end !important;
+}
+.mvFrequencyBar {
+  width: 641px;
+  font-size: 12px;
+  font-family: 'Lucida Grande', Arial, sans-serif;
+  border: #a2b4bb solid 2px;
+}
+.mvFrequencyBar .nodata {
+  text-align: center;
+  background: #e8edef;
+  color: #2d5666;
+  padding: 10px;
+}
+.mvFrequencyBar .main {
+  display: flex;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.mvFrequencyBar .main .plotter {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+}
+.mvFrequencyBar .main .plotter .minVal {
+  padding-right: 2px;
+}
+.mvFrequencyBar .main .plotter .maxVal {
+  padding-left: 2px;
+}
+.mvFrequencyBar .main .plotter .content {
+  flex-grow: 1;
+}
+.mvFrequencyBar .main .plotter .content .top-axis {
+  position: relative;
+  height: 17px;
+  line-height: 17px;
+}
+.mvFrequencyBar .main .plotter .content .axis {
+  flex-grow: 1;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  min-height: 5px;
+  position: relative;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffd800+0,ff0004+100 */
+  background: #ffd800;
+  /* Old browsers */
+  background: -moz-linear-gradient(left, #ffd800 0%, #ff0004 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #ffd800), color-stop(100%, #ff0004));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, #ffd800 0%, #ff0004 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, #ffd800 0%, #ff0004 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, #ffd800 0%, #ff0004 100%);
+  /* IE10+ */
+  background: linear-gradient(to right, #ffd800 0%, #ff0004 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd800', endColorstr='#ff0004', GradientType=1);
+  /* IE6-9 */
+}
+.mvFrequencyBar .main .plotter .content .axis .xTopPoint,
+.mvFrequencyBar .main .plotter .content .axis .xBottomPoint {
+  min-height: 12px;
+  position: absolute;
+  border: 1px solid black;
+  background-clip: padding-box;
+}
+.mvFrequencyBar .main .plotter .content .axis .xTopPoint {
+  margin-top: -7px;
+}
+.mvFrequencyBar .main .plotter .content .xVal {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  min-width: 30px;
+  max-width: 30px;
+  display: inline-block;
+  margin-left: -15px;
+}
+.mvFrequencyBar .main .plotter .content .bottom-axis {
+  position: relative;
+  line-height: 17px;
+  height: 17px;
+}
+.mvFrequencyBar .subtitle {
+  padding-left: 90px;
+}
+.mvXAxisPlotter {
+  width: 641px;
+  font-size: 12px;
+  font-family: 'Lucida Grande', Arial, sans-serif;
+}
+.mvXAxisPlotter .nodata {
+  text-align: center;
+  background: #e8edef;
+  color: #2d5666;
+  padding: 10px;
+}
+.mvXAxisPlotter .main {
+  display: flex;
+}
+.mvXAxisPlotter .main .leftOuterLabel {
+  min-width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  font-weight: bold;
+  text-align: right;
+  padding-right: 10px;
+}
+.mvXAxisPlotter .main .leftOuterLabel span {
+  width: 100%;
+}
+.mvXAxisPlotter .main .plotter {
+  flex-grow: 1;
+}
+.mvXAxisPlotter .main .plotter .top-axis {
+  position: relative;
+}
+.mvXAxisPlotter .main .plotter .top-axis .minVal {
+  left: 0;
+  position: absolute;
+}
+.mvXAxisPlotter .main .plotter .top-axis .maxVal {
+  right: 0;
+  position: absolute;
+}
+.mvXAxisPlotter .main .plotter .axis {
+  border: #a2b4bb solid 1px;
+  border-radius: 8px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  min-height: 8px;
+  position: relative;
+}
+.mvXAxisPlotter .main .plotter .axis .x0Point,
+.mvXAxisPlotter .main .plotter .axis .x1Point {
+  margin-top: -7px;
+  margin-left: -10px;
+  min-height: 20px;
+  min-width: 20px;
+  border: solid 6px;
+  border-radius: 10px;
+  position: absolute;
+  background-clip: padding-box;
+}
+.mvXAxisPlotter .main .plotter .axis .x0Point {
+  border-color: rgba(230, 245, 240, 0.7);
+  background-color: #56c09c;
+}
+.mvXAxisPlotter .main .plotter .axis .x1Point {
+  border-color: rgba(229, 246, 253, 0.7);
+  background-color: #8ad9f8;
+}
+.mvXAxisPlotter .main .plotter .x0Val,
+.mvXAxisPlotter .main .plotter .x1Val {
+  position: relative;
+  text-align: center;
+  font-weight: bold;
+  min-width: 40px;
+  display: inline-block;
+  margin-left: -20px;
+}
+.mvXAxisPlotter .main .plotter .bottom-axis {
+  min-width: 100%;
+}
+.mvXAxisPlotter .subtitle {
+  padding-left: 90px;
+}
+mv-horizontal-bar-gauge-group {
+  font-size: 12px;
+  font-family: 'Lucida Grande', Arial, sans-serif;
+}
+mv-horizontal-bar-gauge-group .leftOuterLabel {
+  min-height: 100%;
+  min-width: 70px;
+  max-width: 70px;
+}
+mv-horizontal-bar-gauge-group .icon {
+  min-height: 100%;
+  min-width: 25px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+mv-horizontal-bar-gauge-group .axis {
+  width: 641px;
+  display: flex;
+  color: #5e5e5e;
+}
+mv-horizontal-bar-gauge-group .axis .subtitle {
+  margin-top: 5px;
+}
+mv-horizontal-bar-gauge-group .axis .minVal {
+  flex-grow: 1;
+  text-align: left;
+}
+mv-horizontal-bar-gauge-group .axis .maxVal {
+  flex-grow: 1;
+  text-align: right;
+}
+mv-horizontal-bar-gauge-group .subtitle {
+  flex-grow: 1;
+}
+.mvHorizontalBarGauge {
+  width: 641px;
+  margin-top: 5px;
+  font-size: 12px;
+  font-family: 'Lucida Grande', Arial, sans-serif;
+}
+.mvHorizontalBarGauge .nodata {
+  text-align: center;
+  background: #e8edef;
+  color: #2d5666;
+  padding: 10px;
+}
+.mvHorizontalBarGauge .main {
+  display: flex;
+  flex-direction: row-reverse;
+  min-height: 30px;
+  min-width: 100%;
+}
+.mvHorizontalBarGauge .main .leftOuterLabel {
+  align-self: center;
+  font-weight: bold;
+  text-align: right;
+  padding-right: 7px;
+}
+.mvHorizontalBarGauge .main .barValueLabel {
+  font-weight: bold;
+}
+.mvHorizontalBarGauge .main.no-data .icon {
+  background-image: url('icons/nodata.svg');
+}
+.mvHorizontalBarGauge .main .icon {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 25px 25px;
+}
+.mvHorizontalBarGauge .main .icon.icon-down {
+  background-image: url('icons/negative.svg');
+}
+.mvHorizontalBarGauge .main .icon.icon-up {
+  background-image: url('icons/positive.svg');
+}
+.mvHorizontalBarGauge .main .icon.icon-equal {
+  background-image: url('icons/equal.svg');
+}
+.mvHorizontalBarGauge .main .icon.icon-before-only {
+  background-image: url('icons/before-only.svg');
+}
+.mvHorizontalBarGauge .main .icon.icon-after-only {
+  background-image: url('icons/after-only.svg');
+}
+.mvHorizontalBarGauge .main.no-data .bar {
+  color: #afafaf;
+}
+.mvHorizontalBarGauge .main .bar {
+  display: flex;
+  position: relative;
+  background-color: #f4f4f4;
+  align-items: center;
+  width: calc(100% - 90px);
+}
+.mvHorizontalBarGauge .main .bar .barFill {
+  position: absolute;
+  min-height: 30px;
+  background-color: blue;
+}
+.mvHorizontalBarGauge .main .bar .leftInnerLabel {
+  position: relative;
+  padding-left: 10px;
+  text-align: left;
+}
+.mvHorizontalBarGauge .main .bar .barValueLabel {
+  position: relative;
+  padding-right: 10px;
+  text-align: right;
+  flex-grow: 1;
+}
+.mvHorizontalBarGauge .main .bar.above {
+  background-color: #e6f5f0;
+}
+.mvHorizontalBarGauge .main .bar.above .barFill {
+  background-color: #56c09c;
+}
+.mvHorizontalBarGauge .main .bar.within {
+  background-color: #e5f6fd;
+}
+.mvHorizontalBarGauge .main .bar.within .barFill {
+  background-color: #8ad9f8;
+}
+.mvHorizontalBarGauge .main .bar.below {
+  background-color: #fde5e5;
+}
+.mvHorizontalBarGauge .main .bar.below .barFill {
+  background-color: #ee0000;
+}
+.mvHueSparkline,
+.mvColorSparkline {
+  position: relative;
+  width: 641px;
+}
+.mvHueSparkline .nodata,
+.mvColorSparkline .nodata {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 12px;
+  line-height: 12px;
+  margin-top: -6px;
+  text-align: center;
+  color: #2d5666;
+}
+.mvHueSparkline .main,
+.mvColorSparkline .main {
+  height: 222px;
+}
+.mvHueSparkline .main .line,
+.mvColorSparkline .main .line {
+  fill: none;
+  stroke-width: 1;
+}
+.mvHueSparkline .main .area,
+.mvColorSparkline .main .area {
+  opacity: 0.15;
+  stroke: none;
+}
+.mvHueSparkline .main .val,
+.mvColorSparkline .main .val {
+  fill: #a2b4bb;
+  font-size: 13px;
+  text-rendering: optimizeLegibility;
+}
+.mvHueSparkline .main .pointer,
+.mvColorSparkline .main .pointer {
+  display: none;
+  fill: #2d5666;
+  stroke: #2d5666;
+  stroke-opacity: 0.3;
+  stroke-width: 8px;
+}
+.mvHueSparkline .main .preview .pointer,
+.mvColorSparkline .main .preview .pointer {
+  display: block;
+}
+.mvHueSparkline .main .axis,
+.mvColorSparkline .main .axis {
+  stroke: #999999;
+  fill: none;
+  stroke-width: 1;
+}
+.mvHueSparkline .main .axis .domain,
+.mvColorSparkline .main .axis .domain,
+.mvHueSparkline .main .axis .tick,
+.mvColorSparkline .main .axis .tick {
+  stroke: #999999;
+  fill: none;
+}
+.mvHueSparkline .main .axis .tick text,
+.mvColorSparkline .main .axis .tick text {
+  stroke: none;
+  font-size: 10px;
+  font-family: 'Lucida Grande', Arial, sans-serif;
+  fill: #5e5e5e;
+  text-rendering: optimizeLegibility;
+}
+.mvSparkline {
+  width: 641px;
+}
+.mvSparkline .nodata {
+  color: #2d5666;
+  padding: 5px;
+}
+.mvSparkline .main {
+  height: 222px;
+}
+.mvSparkline .main .line {
+  fill: none;
+  stroke: #2d5666;
+  stroke-width: 2;
+}
+.mvSparkline .main .area {
+  fill: #e8edef;
+  stroke: none;
+}
+.mvSparkline .main .val {
+  fill: #a2b4bb;
+  font-size: 13px;
+  text-rendering: optimizeLegibility;
+}
+.mvSparkline .main .pointer {
+  display: none;
+  fill: #2d5666;
+  stroke: #2d5666;
+  stroke-opacity: 0.3;
+  stroke-width: 8px;
+}
+.mvSparkline .main .preview .pointer {
+  display: block;
+}
+.mvSparkline .main .axis {
+  stroke: #999999;
+  fill: none;
+  stroke-width: 1;
+}
+.mvSparkline .main .axis .domain,
+.mvSparkline .main .axis .tick {
+  stroke: #999999;
+  fill: none;
+}
+.mvSparkline .main .axis .tick text {
+  stroke: none;
+  font-size: 10px;
+  font-family: 'Lucida Grande', Arial, sans-serif;
+  fill: #5e5e5e;
+  text-rendering: optimizeLegibility;
+}
+.mvHistogram {
+  width: 641px;
+}
+.mvHistogram .domain {
+  display: none;
+}
+.mvHistogram .nodata {
+  text-align: center;
+  background: #e8edef;
+  color: #2d5666;
+  padding: 10px;
+}
+.mvHistogram .main {
+  height: 222px;
+}
+.mvHistogram .main path {
+  stroke: #2d5666;
+  stroke-width: 1;
+  fill: #e8edef;
+}
+.mvHistogram .main .y0Val,
+.mvHistogram .main .y1Val {
+  fill: #a2b4bb;
+  font-size: 13px;
+}
+.mvHistogram .main .minVal,
+.mvHistogram .main .maxVal {
+  stroke: none;
+  font-size: 10px;
+  font-family: 'Lucida Grande', Arial, sans-serif;
+  fill: #5e5e5e;
+  text-rendering: optimizeLegibility;
+}
+.mvHistogram .main .axis {
+  stroke: #999999;
+  fill: none;
+  stroke-width: 1;
+}
+.mvHistogram .main .axis .domain,
+.mvHistogram .main .axis .tick {
+  stroke: #999999;
+  fill: none;
+}
+.mvHistogram .main .axis .tick text {
+  stroke: none;
+  font-size: 10px;
+  font-family: 'Lucida Grande', Arial, sans-serif;
+  fill: #5e5e5e;
+  text-rendering: optimizeLegibility;
+}
+.mvHistogram .main .pointer {
+  display: none;
+  fill: #2d5666;
+  pointer-events: none;
+}
+.mvHistogram .main .label {
+  display: none;
+  font-size: 13px;
+  fill: #2d5666;
+}
+.mvHistogram .main .selected .bar {
+  fill: #2d5666;
+  stroke: #2d5666;
+}
+.mvHistogram .main .preview .pointer {
+  display: block;
+  pointer-events: none;
+}
+.mvHistogram .main .preview .label {
+  display: block;
+}
+.mvHistogram .main .preview .y0Val,
+.mvHistogram .main .preview .y1Val {
+  display: none;
+}
+.mvLineChart {
+  width: 641px;
+}
+.mvLineChart .domain {
+  display: none;
+}
+.mvLineChart .nodata {
+  text-align: center;
+  background: #e8edef;
+  color: #2d5666;
+  padding: 10px;
+}
+.mvLineChart .main {
+  height: 222px;
+}
+.mvLineChart .main .line {
+  fill: none;
+  stroke: #2d5666;
+  stroke-width: 2;
+}
+.mvLineChart .main .area {
+  fill: #e8edef;
+  stroke: none;
+}
+.mvLineChart .main .axis {
+  stroke: #999999;
+  fill: none;
+  stroke-width: 1;
+}
+.mvLineChart .main .axis .domain,
+.mvLineChart .main .axis .tick {
+  stroke: #999999;
+  fill: none;
+}
+.mvLineChart .main .axis .tick text {
+  stroke: none;
+  font-size: 10px;
+  font-family: 'Lucida Grande', Arial, sans-serif;
+  fill: #5e5e5e;
+  text-rendering: optimizeLegibility;
+  text-anchor: end !important;
+}
+.mvLineChart .main .pointer {
+  display: none;
+  fill: #2d5666;
+  pointer-events: none;
+}
+.mvLineChart .main .interpolated {
+  fill: red !important;
+}
+.mvLineChart .main .label {
+  display: none;
+  font-size: 13px;
+  fill: #2d5666;
+}
+.mvLineChart .main .preview .pointer {
+  display: block;
+}
+.mvLineChart .main .preview .label {
+  display: block;
+}
+.mvLineChart .main .preview .y0Val,
+.mvLineChart .main .preview .y1Val {
+  display: none;
+}
+.mvChart {
+  overflow: hidden;
+}
+.mvChart .nodata {
+  text-align: center;
+  background: #e8edef;
+  color: #2d5666;
+  padding: 10px;
+}
+.mvChart.hasLabel .main .index {
+  visibility: hidden;
+}
+.mvChart .main {
+  height: 222px;
+  width: 641px;
+}
+.mvChart .main text {
+  font-family: 'Lucida Grande', Arial, sans-serif;
+  font-size: 11px;
+}
+.mvChart .main .bar {
+  fill: #e8edef;
+  stroke: #2d5666;
+  stroke-width: 1;
+}
+.mvChart .main .selected .bar {
+  fill: #2d5666;
+  stroke: #2d5666;
+}
+.mvChart .main .val {
+  fill: #a2b4bb;
+  font-size: 13px;
+}
+.mvChart .main .index,
+.mvChart .main .label {
+  fill: #5e5e5e;
+}
+.mvChart .main .selected .val {
+  fill: #2d5666;
+  font-weight: bold;
+}
+.mvChart .main .pointer {
+  fill: #2d5666;
+  pointer-events: none;
+}
+.mvChart .axis {
+  stroke: #999999;
+  fill: none;
+  stroke-width: 1;
+}
+.mvChart .axis .domain,
+.mvChart .axis .tick {
+  stroke: none;
+  fill: none;
+}
+.mvChart .axis .tick text {
+  font-size: 10px;
+  font-family: 'Lucida Grande', Arial, sans-serif;
+  fill: #5e5e5e;
+}
+.mvChartBrushContainer {
+  height: 34px;
+}
+.mvChartBrush {
+  height: 100%;
+}
+.mvChartBrush .bars {
+  fill: #e8edee;
+}
+.mvChartBrush .bars .selected {
+  fill: #2d5666;
+}
+.mvChartBrush .border {
+  stroke: #e8edee;
+  fill: none;
+}
+.mvChartBrush .brush {
+  fill: none;
+  stroke: #8098a2;
+}
