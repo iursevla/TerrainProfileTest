@@ -247,12 +247,13 @@ class TestFeature {
     createTerrainProfileForSelectedInterpolation() {
         let numberOfDataPoints = Number(document.getElementById('userNumberOfDataPoints').value);
         let typeOfinterpolation = Array.from(document.getElementsByName("interpolation")).find(r => r.checked).value;
-        console.log(numberOfDataPoints, typeOfinterpolation);
+        let lineDistance  = turf.distance(this.startPos, this.endPos, {units: 'meters'});
+        console.log(numberOfDataPoints, typeOfinterpolation, lineDistance);
 
         let {
             pointsAlongLine,
             distances
-        } = this.getPointsAlongLine([this.startPos, this.endPos], 896854, numberOfDataPoints);
+        } = this.getPointsAlongLine([this.startPos, this.endPos], lineDistance, numberOfDataPoints);
         this.distancesFromStartPoint = distances;
         this.requestAllDataPoints(pointsAlongLine, numberOfDataPoints, typeOfinterpolation);
     }
@@ -260,11 +261,13 @@ class TestFeature {
     createTerrainProfileForAllInterpolations() {
         let numberOfDataPoints = Number(document.getElementById('userNumberOfDataPoints').value);
         let allInterpolations = Array.from(document.getElementsByName("interpolation")).map(r => r.value);
-        console.log(numberOfDataPoints, allInterpolations);
+        let lineDistance  = turf.distance(this.startPos, this.endPos, {units: 'meters'});
+        console.log(numberOfDataPoints, typeOfinterpolation, lineDistance);
+
         let {
             pointsAlongLine,
             distances
-        } = this.getPointsAlongLine([this.startPos, this.endPos], 896854, numberOfDataPoints);
+        } = this.getPointsAlongLine([this.startPos, this.endPos], lineDistance, numberOfDataPoints);
         this.distancesFromStartPoint = distances;
 
         for (let interpolation of allInterpolations) {
