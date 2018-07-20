@@ -251,15 +251,12 @@ class TestFeature {
 
     //Get the coordinates of the lat lng the user is 
     getCoordinates() {
-        // this.startPos = [-9.150324, 38.725831]; //MarquesPombal -> Rio
-        // this.endPos = [-9.145066, 38.704972];
-
         let startLng = Number(document.getElementsByName('startLongitude')[0].value);
         let startLat = Number(document.getElementsByName('startLatitude')[0].value);
         let endLng = Number(document.getElementsByName('endLongitude')[0].value);
         let endLat = Number(document.getElementsByName('endLatitude')[0].value);
 
-        this.startPos = [startLng, startLat]; //MarquesPombal -> Rio
+        this.startPos = [startLng, startLat];
         this.endPos = [endLng, endLat];
 
         console.warn(this.startPos, this.endPos);
