@@ -262,7 +262,7 @@ class TestFeature {
         let numberOfDataPoints = Number(document.getElementById('userNumberOfDataPoints').value);
         let allInterpolations = Array.from(document.getElementsByName("interpolation")).map(r => r.value);
         let lineDistance  = turf.distance(this.startPos, this.endPos, {units: 'meters'});
-        console.log(numberOfDataPoints, typeOfinterpolation, lineDistance);
+        console.log(numberOfDataPoints, allInterpolations, lineDistance);
 
         let {
             pointsAlongLine,
@@ -298,6 +298,10 @@ class TestFeature {
         let el = this.$compile(mvLineChartStr)(this.scope);
         let div = document.getElementsByClassName('listOfCharts')[0];
         div.appendChild(el[0]);
+    }
+
+    clearAll() {
+        document.getElementsByClassName('listOfCharts')[0].innerHTML = '';
     }
 }
 
