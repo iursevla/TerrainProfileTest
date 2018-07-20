@@ -2,8 +2,14 @@ class TestFeature {
 
     constructor(scope, element, $compile, $q, $http) {
         this.accessToken = 'pk.eyJ1IjoicnJhbHZlcyIsImEiOiJjajFtNXRidzgwMDQxMnFubzFscjhnOW5pIn0.uCoI291r2vl4Z9srTKfK4Q';
-        this.startPos = [14.21630859375, -13.944729974920166];
-        this.endPos = [20.76416015625, -9.058702156392126];
+        // this.startPos = [14.21630859375, -13.944729974920166];
+        // this.endPos = [20.76416015625, -9.058702156392126];
+
+        // this.startPos = [-9.144637, 38.713663]; //Bairro -> Rio
+        // this.endPos = [-9.145066, 38.704972];
+
+        this.startPos = [-9.150324, 38.725831]; //MarquesPombal -> Rio
+        this.endPos = [-9.145066, 38.704972];
 
         this.line = turf.lineString([
             this.startPos,
@@ -23,7 +29,8 @@ class TestFeature {
     //GOOD
     createMapBox() {
         L.mapbox.accessToken = this.accessToken;
-        let map = L.mapbox.map("map", 'mapbox.streets');
+        let map = L.mapbox.map("map", 'mapbox.streets').setView([this.startPos[1], this.startPos[0]], 12);
+        
         map.on('zoom', () => {
             // this.updateIntersection();
         });
@@ -34,15 +41,14 @@ class TestFeature {
         this.map = map;
 
         //Add 50 markers along the line 
+        let lineDistance  = turf.distance(this.startPos, this.endPos, {units: 'meters'});
         let {
             pointsAlongLine
-        } = this.getPointsAlongLine([this.startPos, this.endPos], 896854, 50);
+        } = this.getPointsAlongLine([this.startPos, this.endPos], 9999999, 50);
         console.log(pointsAlongLine);
         this.addMarkersToPoints(pointsAlongLine);
 
-
-
-        this.addLine(this.startPos, this.endPos);
+        // this.addLine(this.startPos, this.endPos);
 
         return map;
     }
@@ -138,7 +144,6 @@ class TestFeature {
         console.log(this);
 
     }
-
 
     /**
      * @param {JSON} data
@@ -244,7 +249,31 @@ class TestFeature {
         });
     }
 
+    //Get the coordinates of the lat lng the user is 
+    getCoordinates() {
+        // this.startPos = [-9.150324, 38.725831]; //MarquesPombal -> Rio
+        // this.endPos = [-9.145066, 38.704972];
+
+        let startLng = Number(document.getElementsByName('startLongitude')[0].value);
+        let startLat = Number(document.getElementsByName('startLatitude')[0].value);
+        let endLng = Number(document.getElementsByName('endLongitude')[0].value);
+        let endLat = Number(document.getElementsByName('endLatitude')[0].value);
+
+        this.startPos = [startLng, startLat]; //MarquesPombal -> Rio
+        this.endPos = [endLng, endLat];
+
+        console.warn(this.startPos, this.endPos);
+
+        this.line = turf.lineString([
+            this.startPos,
+            this.endPos
+        ], {
+            name: 'test line along'
+        });
+    }
+
     createTerrainProfileForSelectedInterpolation() {
+        this.getCoordinates();
         let numberOfDataPoints = Number(document.getElementById('userNumberOfDataPoints').value);
         let typeOfinterpolation = Array.from(document.getElementsByName("interpolation")).find(r => r.checked).value;
         let lineDistance  = turf.distance(this.startPos, this.endPos, {units: 'meters'});
@@ -256,9 +285,12 @@ class TestFeature {
         } = this.getPointsAlongLine([this.startPos, this.endPos], lineDistance, numberOfDataPoints);
         this.distancesFromStartPoint = distances;
         this.requestAllDataPoints(pointsAlongLine, numberOfDataPoints, typeOfinterpolation);
+
+        // this.createMapBox();
     }
 
     createTerrainProfileForAllInterpolations() {
+        this.getCoordinates();
         let numberOfDataPoints = Number(document.getElementById('userNumberOfDataPoints').value);
         let allInterpolations = Array.from(document.getElementsByName("interpolation")).map(r => r.value);
         let lineDistance  = turf.distance(this.startPos, this.endPos, {units: 'meters'});
@@ -273,6 +305,8 @@ class TestFeature {
         for (let interpolation of allInterpolations) {
             this.requestAllDataPoints(pointsAlongLine, numberOfDataPoints, interpolation);
         }
+
+        // this.createMapBox();
     }
 
     /**
@@ -302,6 +336,7 @@ class TestFeature {
 
     clearAll() {
         document.getElementsByClassName('listOfCharts')[0].innerHTML = '';
+        document.getElementById('map').innerHTML = '';
     }
 }
 

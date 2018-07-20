@@ -1,8 +1,10 @@
 <div class="top">
     <h2>Number of data points</h2>
     <input type="number" min="0" step="1" value="50" id="userNumberOfDataPoints" />
-   
-    <h2>Type of chart interpolation: <a target="_blank" href="https://bl.ocks.org/emmasaunders/f7178ed715a601c5b2c458a2c7093f78">from d3</a></h2>
+
+    <h2>Type of chart interpolation:
+        <a target="_blank" href="https://bl.ocks.org/emmasaunders/f7178ed715a601c5b2c458a2c7093f78">from d3</a>
+    </h2>
     <form>
         <input type="radio" name="interpolation" value="linear" checked> linear
         <br>
@@ -14,12 +16,24 @@
         <br>
         <input type="radio" name="interpolation" value="cardinal"> cardinal
     </form>
+
+    <h2>Coordinates</h2>
+    <form>
+        Start Longitude <input type="number" name="startLongitude" value="-9.150324">
+        Start Latitude <input type="number" name="startLatitude" value="38.725831">
+        <br>
+        End Longitude <input type="number" name="endLongitude" value="-9.145066"> 
+        End Latitude <input type="number" name="endLatitude" value="38.704972"> 
+    </form>
+
     <br>
     <button ng-click="testFeature.createTerrainProfileForSelectedInterpolation()" class="testButton">Try current interpolation</button>
     <button ng-click="testFeature.createTerrainProfileForAllInterpolations()" class="testButton">Try all interpolations</button>
     <button ng-click="testFeature.clearAll()" class="testButton">Clear all</button>
     <hr>
 </div>
+
+<!-- <div id="map" style="width:500px; height: 300px;"></div> -->
 
 <div class="listOfCharts">
 
