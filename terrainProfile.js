@@ -289,7 +289,7 @@ class TestFeature {
                         no-data-msg="No terrain profile data" 
                         unit="m" 
                         interpolation="${typeOfinterpolation}"
-                        chart-options='{"margin": {"left": 40, "bottom": 35, "right": 0}, "width": 375}'
+                        chart-options='{"margin": {"left": 40, "bottom": 35, "right": 0}, "width": 375, "height": 222}'
                         data='${JSON.stringify(chartData)}'
                 >
                 <mv-line-chart>

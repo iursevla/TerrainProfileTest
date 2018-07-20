@@ -17,10 +17,14 @@
 .singleLineChart {
     /* Make it the same size as in Metric */
     width: 423px;
-    height: 326px;
+    height: 290px;
     border: 1px solid;
 }
 
 .redText {
     color: red;
+}
+
+svg {
+    height: 222px;
 }
