@@ -2,6 +2,7 @@ class TestFeature {
 
     constructor(scope, element, $compile, $q, $http) {
         this.accessToken = 'pk.eyJ1IjoicnJhbHZlcyIsImEiOiJjajFtNXRidzgwMDQxMnFubzFscjhnOW5pIn0.uCoI291r2vl4Z9srTKfK4Q';
+        this.googleMapsKey = 'AIzaSyAtlMIywRddECEwbpWZgPTsFjoQzoHMnD8';
         // this.startPos = [14.21630859375, -13.944729974920166];
         // this.endPos = [20.76416015625, -9.058702156392126];
 
@@ -30,7 +31,7 @@ class TestFeature {
     createMapBox() {
         L.mapbox.accessToken = this.accessToken;
         let map = L.mapbox.map("map", 'mapbox.streets').setView([this.startPos[1], this.startPos[0]], 12);
-        
+
         map.on('zoom', () => {
             // this.updateIntersection();
         });
@@ -41,7 +42,9 @@ class TestFeature {
         this.map = map;
 
         //Add 50 markers along the line 
-        let lineDistance  = turf.distance(this.startPos, this.endPos, {units: 'meters'});
+        let lineDistance = turf.distance(this.startPos, this.endPos, {
+            units: 'meters'
+        });
         let {
             pointsAlongLine
         } = this.getPointsAlongLine([this.startPos, this.endPos], 9999999, 50);
@@ -239,7 +242,7 @@ class TestFeature {
         let requests = this.createHTTPRequests(samples);
         this.$q.all(requests).then(function (values) {
             let terrainProfileValues = that.interpolateUndefinedValues(values);
-            console.log("HERE");
+            // console.log("HERE");
             if (terrainProfileValues.length > 0) {
                 that.scope.chartData = terrainProfileValues;
                 that.addDynamicMvLineChart(terrainProfileValues, numberOfDataPoints, typeOfinterpolation);
@@ -247,6 +250,76 @@ class TestFeature {
                 that.scope.chartData = undefined;
             }
         });
+    }
+
+    /**
+     * 
+     * @param {Number[][]} samples - The lat/lng samples.
+     * @param {Number} numberOfDataPoints - The number of points on the line.
+     * @param {String} typeOfinterpolation - The type of interpolation (linear, ...). 
+     */
+    requestAllDataPointsGMaps(samples, numberOfDataPoints, typeOfinterpolation) {
+        console.warn(samples, numberOfDataPoints, typeOfinterpolation);
+        // let googleElevationAPIURL = "https://maps.googleapis.com/maps/api/elevation/json?locations=";
+        // let locations = "";
+        // for (let sample of samples) {
+        //     let [lng, lat] = [...sample];
+        //     locations += lat + "," + lng + "|"; //Lat first because this is the way the GMaps its expecting
+        // }
+        // console.info(locations);
+        // locations = locations.slice(0, -1);
+        this.gmapsToLatLng(samples, numberOfDataPoints, typeOfinterpolation);
+        // let URL = "https://maps.googleapis.com/maps/api/elevation/json?locations=39.7391536,-104.9847034|36.455556,-116.866667&key=AIzaSyAtlMIywRddECEwbpWZgPTsFjoQzoHMnD8";
+        // let gmapsElevationReqURL = `http://maps.googleapis.com/maps/api/elevation/json?locations=${locations}&key=${this.googleMapsKey}`;
+        // console.info(gmapsElevationReqURL);
+        // fetch(gmapsElevationReqURL, {
+        //         method: 'GET',
+        //         mode: 'cors',
+        //         headers: {
+        //             'Access-Control-Allow-Origin': '*'
+        //         }
+        //     })
+        //     .then(function (response) {
+        //         console.log(response);
+        //         console.log(response.json());
+        //         // return response.json();
+        //     })
+    }
+
+    gmapsToLatLng(samples, numberOfDataPoints, typeOfinterpolation) {
+        let locations = [];
+        for (let sample of samples) {
+            let [lng, lat] = [...sample];
+            locations.push({
+                lat,
+                lng
+            }); //Lat first because this is the way the GMaps its expecting
+        }
+        console.log("GMAPS locations", locations);
+
+        let that = this;
+        //Do the google maps request 
+        let elevator = new google.maps.ElevationService;
+        elevator.getElevationForLocations({
+            locations: locations
+        }, function (results, status) {
+            console.log(results, status);
+
+            let values = [];
+            for (let res of results) {
+                values.push(res.elevation);
+            }
+
+            //Not need because GMaps does not give undefined values
+            let terrainProfileValues = that.interpolateUndefinedValues(values);
+            console.log("terrainProfVals", terrainProfileValues);
+            if (terrainProfileValues.length > 0) {
+                that.scope.chartData = terrainProfileValues;
+                that.addDynamicMvLineChart(terrainProfileValues, numberOfDataPoints, typeOfinterpolation);
+            } else {
+                that.scope.chartData = undefined;
+            }
+        })
     }
 
     //Get the coordinates of the lat lng the user is 
@@ -273,7 +346,9 @@ class TestFeature {
         this.getCoordinates();
         let numberOfDataPoints = Number(document.getElementById('userNumberOfDataPoints').value);
         let typeOfinterpolation = Array.from(document.getElementsByName("interpolation")).find(r => r.checked).value;
-        let lineDistance  = turf.distance(this.startPos, this.endPos, {units: 'meters'});
+        let lineDistance = turf.distance(this.startPos, this.endPos, {
+            units: 'meters'
+        });
         console.log(numberOfDataPoints, typeOfinterpolation, lineDistance);
 
         let {
@@ -282,6 +357,7 @@ class TestFeature {
         } = this.getPointsAlongLine([this.startPos, this.endPos], lineDistance, numberOfDataPoints);
         this.distancesFromStartPoint = distances;
         this.requestAllDataPoints(pointsAlongLine, numberOfDataPoints, typeOfinterpolation);
+        this.requestAllDataPointsGMaps(pointsAlongLine, numberOfDataPoints, typeOfinterpolation);
 
         // this.createMapBox();
     }
@@ -290,7 +366,9 @@ class TestFeature {
         this.getCoordinates();
         let numberOfDataPoints = Number(document.getElementById('userNumberOfDataPoints').value);
         let allInterpolations = Array.from(document.getElementsByName("interpolation")).map(r => r.value);
-        let lineDistance  = turf.distance(this.startPos, this.endPos, {units: 'meters'});
+        let lineDistance = turf.distance(this.startPos, this.endPos, {
+            units: 'meters'
+        });
         console.log(numberOfDataPoints, allInterpolations, lineDistance);
 
         let {
@@ -301,6 +379,7 @@ class TestFeature {
 
         for (let interpolation of allInterpolations) {
             this.requestAllDataPoints(pointsAlongLine, numberOfDataPoints, interpolation);
+            this.requestAllDataPointsGMaps(pointsAlongLine, numberOfDataPoints, interpolation);
         }
 
         // this.createMapBox();

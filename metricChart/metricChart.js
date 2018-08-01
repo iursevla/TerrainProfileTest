@@ -2071,7 +2071,7 @@
 		var y = d3.scale.linear().range([0, h]);
 		var x = scope.reverse ? d3.scale.linear().range([w, 0]) : d3.scale.linear().range([0, w]);
 		var interpolate = scope.interpolation;
-		console.warn(scope.interpolation, interpolate);
+		// console.warn(scope.interpolation, interpolate);
 		var line = d3.svg.line()
 			.interpolate(interpolate)
 			.x(function (d) {
